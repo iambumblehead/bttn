@@ -1,0 +1,24 @@
+/* Filename: button-test.less  
+ * Timestamp: 2013.12.14-10:07:32 (last modified)  
+ * Author(s): Bumblehead (www.bumblehead.com)  
+ */
+
+.bttn {
+    display:inline-block;
+    background-color:blue;
+    color:#fff;
+    border:1px solid red;
+}
+
+.bttn:hover {
+    background-color:red;    
+}
+
+.bttn-label {
+    display:inline-block;
+    margin:20px 10px;
+}
+
+.bttn.st-bttn-active {
+    background-color:green;
+}
