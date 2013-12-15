@@ -1,6 +1,6 @@
 {
   "name": "bttn",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "readmeFilename": "README.md",
   "license" : "MIT",
   "description": "construct click functionality around an element",

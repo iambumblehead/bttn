@@ -1,5 +1,5 @@
 // Filename: bttn.js
-// Timestamp: 2013.12.14-16:04:12 (last modified)  
+// Timestamp: 2013.12.15-10:30:27 (last modified)  
 // Author(s): Bumblehead (www.bumblehead.com)
 // Requires: eventhook.js, elemst.js, lsn.js
 
@@ -65,8 +65,6 @@ var bttn = (function (proto, constructor) {
   constructor = function (spec) {
     var that = Object.create(proto);
 
-    that.isAllowEvent = (spec.isAllowEvent) ? true : false;
-
     if (typeof spec.elem === 'object') {
       that.elem = spec.elem;
     } else if (typeof spec.elemId === 'string') {
@@ -81,8 +79,8 @@ var bttn = (function (proto, constructor) {
 
     if (spec.onClick) that.addClickFn(spec.onClick);
     if (spec.onFocus) that.onFocus = true;
-
-    that.attach();
+    if (spec.isAllowEvent !== false) that.isAllowEvent = spec.isAllowEvent;
+    if (spec.isAttach !== false) that.attach();
 
     return that;
   };
