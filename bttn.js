@@ -1,5 +1,5 @@
 // Filename: bttn.js
-// Timestamp: 2013.12.15-21:11:36 (last modified)  
+// Timestamp: 2013.12.15-23:14:06 (last modified)  
 // Author(s): Bumblehead (www.bumblehead.com)
 // Requires: eventhook.js, elemst.js, lsn.js, domev.js
 
@@ -20,8 +20,9 @@ var bttn = (function (proto, constructor) {
     hasElem : function (felem) {
       var elem = this.elem;
 
-      return (elem.contains(felem) ||
-              elem.id === felem.id);
+      return (felem &&
+              (elem.contains(felem) ||
+               elem.id === felem.id));
     },
 
     isActive : function () {
@@ -33,6 +34,14 @@ var bttn = (function (proto, constructor) {
     deactivate : function () {
       elemst.up(this.elem, 'bttn-inactive');
     },
+    switchactivate : function () {
+      if (this.isActive()) {
+        this.deactivate();
+      } else {
+        this.activate();
+      }
+    },
+
 
     addClickFn : function (fn) {
       this.atClickHook.addFn(fn);
