@@ -1,7 +1,7 @@
 // Filename: bttn.js
-// Timestamp: 2013.12.15-10:30:27 (last modified)  
+// Timestamp: 2013.12.15-21:11:36 (last modified)  
 // Author(s): Bumblehead (www.bumblehead.com)
-// Requires: eventhook.js, elemst.js, lsn.js
+// Requires: eventhook.js, elemst.js, lsn.js, domev.js
 
 var bttn = (function (proto, constructor) {
 
@@ -14,13 +14,14 @@ var bttn = (function (proto, constructor) {
 
     // should be redefined
     stopDefaultEvent : function(e) {
-      if (typeof e === 'object' && e) {
-        if (e.preventDefault) {
-          e.preventDefault();
-        } else {
-          e.returnValue = false;
-        }
-      }
+      return domev.stopDefaultAt(e);
+    },
+    
+    hasElem : function (felem) {
+      var elem = this.elem;
+
+      return (elem.contains(felem) ||
+              elem.id === felem.id);
     },
 
     isActive : function () {
@@ -37,8 +38,15 @@ var bttn = (function (proto, constructor) {
       this.atClickHook.addFn(fn);
     },
 
+    handleEvent : function (event) {
+      if (event) {
+        return this.isAllowEvent || this.stopDefaultEvent(event);
+      }
+    },
+
     clickFire : function (event) {
       this.atClickHook.fire(event);
+
     },
 
     attach : function () {
@@ -51,12 +59,12 @@ var bttn = (function (proto, constructor) {
 
       that.addListener(elem, 'click', function (event) {
         that.clickFire(event);
-        return that.isAllowEvent || that.stopDefaultEvent(event);
+        return this.handleEvent(event);
       });
 
       if (that.onFocus) {
         that.addListener(elem, 'focus', function (event) {
-          that.clickFire(event);
+          return that.clickFire(event);
         });
       }
     }

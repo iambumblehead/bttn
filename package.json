@@ -16,6 +16,7 @@
   "dependencies" : {
       "eventhook" : ">=0.0.1",
       "lsn" : ">=0.0.1",
+      "domev" : ">=0.0.1",
       "elemst" : ">=0.0.1"
   },
   "devDependencies" : {
