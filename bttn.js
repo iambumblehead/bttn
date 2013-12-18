@@ -1,5 +1,5 @@
 // Filename: bttn.js
-// Timestamp: 2013.12.15-23:14:06 (last modified)  
+// Timestamp: 2013.12.17-18:13:48 (last modified)  
 // Author(s): Bumblehead (www.bumblehead.com)
 // Requires: eventhook.js, elemst.js, lsn.js, domev.js
 
@@ -81,6 +81,8 @@ var bttn = (function (proto, constructor) {
 
   constructor = function (spec) {
     var that = Object.create(proto);
+
+    that.name = spec.name || '';
 
     if (typeof spec.elem === 'object') {
       that.elem = spec.elem;
