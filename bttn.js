@@ -1,5 +1,5 @@
 // Filename: bttn.js
-// Timestamp: 2013.12.17-18:13:48 (last modified)  
+// Timestamp: 2015.03.05-00:13:28 (last modified)  
 // Author(s): Bumblehead (www.bumblehead.com)
 // Requires: eventhook.js, elemst.js, lsn.js, domev.js
 
@@ -68,7 +68,7 @@ var bttn = (function (proto, constructor) {
 
       that.addListener(elem, 'click', function (event) {
         that.clickFire(event);
-        return this.handleEvent(event);
+        return that.handleEvent(event);
       });
 
       if (that.onFocus) {
