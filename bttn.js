@@ -1,9 +1,13 @@
 // Filename: bttn.js
-// Timestamp: 2015.03.05-00:13:28 (last modified)  
+// Timestamp: 2015.12.20-01:31:53 (last modified)
 // Author(s): Bumblehead (www.bumblehead.com)
-// Requires: eventhook.js, elemst.js, lsn.js, domev.js
 
-var bttn = (function (proto, constructor) {
+var eventhook = require('eventhook'),
+    elemst = require('elemst'),
+    domev = require('domev'),
+    lsn = require('lsn');
+
+var bttn = module.exports = (function (proto, constructor) {
 
   proto = {
     isAllowEvent : false,
@@ -94,7 +98,7 @@ var bttn = (function (proto, constructor) {
       throw new Error('error initializing button: ' + spec.name + ' ' + spec.elemId);
     }
 
-    that.atClickHook = eventhook.getNew();
+    that.atClickHook = eventhook();
 
     if (spec.onClick) that.addClickFn(spec.onClick);
     if (spec.onFocus) that.onFocus = true;
